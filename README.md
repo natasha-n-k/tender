@@ -42,36 +42,38 @@
 
 ```python -c "from database import init_db; init_db()"```
 
-- запустите приложение:
+- Запустите приложение:
 
 ```python app.py```
 
 Приложение будет доступно по адресу http://localhost:8080.
 
 ### Запуск через Docker
-Соберите Docker-образ:
+- Соберите Docker-образ:
 
 ```docker build -t tender-service .```
 
-Запустите контейнеры:
+-  Запустите контейнеры:
 
 ```docker-compose up```
 
 Приложение будет доступно по адресу http://localhost:8080.
 
 ### Запуск в Kubernetes
-Примените манифесты для деплоя базы данных и приложения:
+- Примените манифесты для деплоя базы данных и приложения:
 
 ```kubectl apply -f postgres-deployment.yaml```
+
 ```kubectl apply -f postgres-service.yaml```
+
 ``` kubectl apply -f app-deployment.yaml```
 
-Проверьте, что сервисы запущены и работают:
+- Проверьте, что сервисы запущены и работают:
 
 ```kubectl get pods```
 ```kubectl get services```
 
-Приложение будет доступно через NodePort или Ingress, в зависимости от вашей настройки Kubernetes.
+- Приложение будет доступно через NodePort или Ingress, в зависимости от вашей настройки Kubernetes.
 
 ## Тестирование
 Для запуска тестов используйте pytest:
