@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: your-app-image:latest  # Заменить 
+        ports:
+        - containerPort: 8080
+        env:
+        - name: POSTGRES_CONN
+          value: "postgresql://postgres:1234@postgres:5432/postgres"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+spec:
+  type: NodePort
+  selector:
+    app: app
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30008
